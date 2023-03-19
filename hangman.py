@@ -1,11 +1,22 @@
 import random
 
 # List of possible words for the game
-words = ['apple', 'banana', 'cherry', 'dragonfruit', 'elderberry', 'fig', 'grapefruit', 'honeydew']
-
 def select_word():
-    """Selects a random word from the list of possible words."""
-    return random.choice(words)
+    """Selects a random word from the list of possible words in a chosen category."""
+    categories = {
+        'fruits': ['apple', 'banana', 'cherry', 'dragonfruit', 'elderberry', 'fig', 'grapefruit', 'honeydew'],
+        'colors': ['black', 'blue', 'green', 'orange', 'pink', 'purple', 'red', 'yellow'],
+        'animals': ['cat', 'dog', 'elephant', 'giraffe', 'hippopotamus', 'lion', 'rhinoceros', 'zebra'],
+        'countries': ['canada', 'china', 'france', 'germany', 'india', 'japan', 'spain', 'united states']
+    }
+
+    while True:
+        category = input('Choose a category (fruits, colors, animals, countries): ').lower()
+        if category in categories:
+            word = random.choice(categories[category])
+            return word
+        else:
+            print('Please choose a valid category.')
 
 def display_word(word, guessed_letters):
     """Displays the current state of the word with guessed letters filled in."""
